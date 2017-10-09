@@ -1,0 +1,11 @@
+data/
+node_modules/
+
+npm-debug.log
+
+# build folder
+build/
+server/js/
+server/server.min.js
+
+temp/
