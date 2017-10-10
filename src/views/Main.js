@@ -4,16 +4,21 @@ import PropTypes from 'prop-types';
 import _get from 'lodash/get';
 import { Map as iMap } from 'immutable';
 
-import ImageComponent from './../components/image';
 import ButtonComponent from './../components/button';
 
 import styles from './styles';
 
 export default class MainComponent extends Component {
+  /**
+  * Call action to loads first images when compoent mounts
+  */
   componentDidMount = () => {
     this.props.flickrGetData();
   }
 
+  /**
+  * Checks index of current image, if is close to the end, load next 10
+  */
   componentDidUpdate = () => {
     const flickr = _get(this, 'props.store.flickr');
 
@@ -28,7 +33,7 @@ export default class MainComponent extends Component {
       }
     }
   }
-
+  // Increments current image index
   onNextClickHandler = () => {
     const { flickr } = this.props.store;
     const { flickrGetNext } = this.props;
@@ -37,7 +42,7 @@ export default class MainComponent extends Component {
       flickrGetNext();
     }
   }
-
+  // Calls action to decrement current index
   onPreviousClickHandler = () => {
     const { flickr } = this.props.store;
     const { flickrGetPrevious } = this.props;
@@ -46,13 +51,14 @@ export default class MainComponent extends Component {
       flickrGetPrevious();
     }
   }
-
+ // Formates background image src value from immutable image object
   getFlickrImageUrl = image => (
     `//farm${image.get('farm')}.staticflickr.com/${image.get('server')}/${image.get('id')}_${image.get('secret')}.jpg`
   );
 
-
+  // Get Header label based on loading state
   getHeaderText = flickr => ((flickr.get('isLoading')) ? 'Flickr Loading...' : 'Flickr');
+  // Get css for image background
   getMainStyle = (flickr) => {
     const currentIndex = flickr.get('currentIndex');
     const data = flickr.get('data');
@@ -86,10 +92,7 @@ export default class MainComponent extends Component {
   }
 }
 
-MainComponent.defaultProps = {
-  store : { flickr : PropTypes.instanceOf(iMap) },
-};
-
+MainComponent.defaultProps = { store : { flickr : PropTypes.instanceOf(iMap) } };
 MainComponent.propTypes = {
   store             : PropTypes.shape({ flickr : PropTypes.instanceOf(iMap) }),
   flickrGetData     : PropTypes.func,

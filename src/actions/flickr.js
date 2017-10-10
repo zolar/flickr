@@ -25,7 +25,7 @@ export const FLICKR_SET_CURRENT_INDEX = 'FLICKR_SET_CURRENT_INDEX';
  *
  * @param response
  * @param dispatch
- * @returns data
+ * @returns {Object}
  */
 const flickrGetSuccess = (response, dispatch) => {
   if (response && _get(response, 'stat') === 'ok') {
@@ -64,7 +64,7 @@ const flickrGetData = () =>
 * @method flickrGetNext
 * sets next image to displays index
 *
-* @returns dispatch promise
+* @returns {Promise}
 */
 const flickrGetNext = () =>
   (dispatch, getState) => {
@@ -78,7 +78,7 @@ const flickrGetNext = () =>
 * @method flickrGetNext
 * sets previous image to displays index
 *
-* @returns dispatch promise
+* @returns {Promise}
 */
 const flickrGetPrevious = () =>
   (dispatch, getState) => {

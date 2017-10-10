@@ -27,7 +27,7 @@ export const INITIAL_STATE = iMap({
 * Sets loading state
 *
 * @param state
-* @returns new state
+* @returns {Object}
 */
 const flickrGetDataBegin = state => state.merge({
   error     : null,
@@ -40,7 +40,7 @@ const flickrGetDataBegin = state => state.merge({
  *
  * @param state
  * @param actions
- * @returns new state
+ * @returns {Object}
  */
 const flickrGetDataError = (state, actions) => state.merge({
   error     : actions.error,
@@ -53,7 +53,7 @@ const flickrGetDataError = (state, actions) => state.merge({
  *
  * @param state
  * @param actions
- * @returns new state
+ * @returns {Object}
  */
 const flickrGetDataSuccess = (state, actions) => {
   const requestParams = state.get('requestParams');
@@ -72,7 +72,7 @@ const flickrGetDataSuccess = (state, actions) => {
  *
  * @param state
  * @param actions
- * @returns new state
+ * @returns {Object}
  */
 const flickrSetCurrentIndex = (state, action) => state.merge({ currentIndex : action.index });
 

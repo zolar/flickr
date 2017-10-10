@@ -1,6 +1,5 @@
 /**
- *
- *
+ * Root component used to attach actions
  **/
 
 import React from 'react';

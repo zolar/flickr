@@ -8,7 +8,7 @@ const middleware = [thunkMiddleware];
 // GET ENV VALUES FROM THE window to know which middleware to use.
 const isDevelopment = _get(window, 'CONFIG.development');
 const middlewareLogsOff = _get(window, 'CONFIG.middlewareLogsOff');
-
+// Add logger middleware if in development mode
 if (isDevelopment && !middlewareLogsOff) {
   const loggerMiddleware = createLogger();
   middleware.push(loggerMiddleware);

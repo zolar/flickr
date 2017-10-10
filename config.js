@@ -6,4 +6,4 @@ export const FLICKR_OPTIONS = {
 
 export const FLICKER_URI = '/flickr';
 export const SERVICE_IP = '127.0.0.1';
-export const SERVICE_PORT = 8081;
+export const SERVICE_PORT = 8080;
